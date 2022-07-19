@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="147" id="Jbs-4h-J0M" customClass="SearchTableViewCell" customModule="TrendMedia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" rowHeight="147" id="Jbs-4h-J0M" customClass="SearchTableViewCell" customModule="TrendMedia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="147"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jbs-4h-J0M" id="X28-PP-puA">
@@ -100,7 +100,7 @@
                                     <outlet property="movieDateLabel" destination="hjE-7F-Sks" id="mvc-uK-cBh"/>
                                     <outlet property="movieDetailLabel" destination="bg0-7S-pSd" id="xI6-5H-BDX"/>
                                     <outlet property="movieImageView" destination="3kE-Xj-ew1" id="MDn-Xf-bU2"/>
-                                    <outlet property="movireTitleLabel" destination="dwn-Ff-otT" id="GH3-b9-OCS"/>
+                                    <outlet property="movieTitleLabel" destination="dwn-Ff-otT" id="g1d-z1-5b1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
