@@ -26,5 +26,16 @@ class SearchTableViewCell: UITableViewCell {
 
         
     }
+    
+    func configureCell(indexPath: IndexPath, db: MovieDB){
+        
+        movieDateLabel.text = "\(db.movieDataList[indexPath.row].movieDate) | \(db.movieDataList[indexPath.row].movieRuntime!)분 | 평점: \(db.movieDataList[indexPath.row].movieRate)"
+        movieTitleLabel.text = db.movieDataList[indexPath.row].movieTitle
+        movieDetailLabel.text = db.movieDataList[indexPath.row].movieDetail
+        movieImageView.image = db.movieDataList[indexPath.row].movieImage
+        cellBaseView.backgroundColor = UIColor.white.withAlphaComponent(0)
+
+    }
+    
 
 }

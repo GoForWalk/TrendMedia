@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ijg-mg-d9A">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nuo-5D-9ua">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -7,6 +7,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,6 +43,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="120" y="62"/>
+        </scene>
+        <!--Recommand Collection View Controller-->
+        <scene sceneID="pd2-W9-Buu">
+            <objects>
+                <collectionViewController id="Nuo-5D-9ua" customClass="RecommandCollectionViewController" customModule="TrendMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="e6I-63-nUE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qwz-mC-340">
+                            <size key="itemSize" width="134" height="137"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="50" minY="50" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommandCollectionViewCell" id="Rwu-Wi-Kdz" customClass="RecommandCollectionViewCell" customModule="TrendMedia" customModuleProvider="target">
+                                <rect key="frame" x="50" y="50" width="134" height="137"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JM7-0O-cvw">
+                                    <rect key="frame" x="0.0" y="0.0" width="134" height="137"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r8s-ax-dhd">
+                                            <rect key="frame" x="0.0" y="0.0" width="134" height="137"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="r8s-ax-dhd" firstAttribute="leading" secondItem="JM7-0O-cvw" secondAttribute="leading" id="CIN-eW-Gad"/>
+                                        <constraint firstAttribute="trailing" secondItem="r8s-ax-dhd" secondAttribute="trailing" id="See-Qw-O8B"/>
+                                        <constraint firstAttribute="bottom" secondItem="r8s-ax-dhd" secondAttribute="bottom" id="Vay-uZ-zr1"/>
+                                        <constraint firstItem="r8s-ax-dhd" firstAttribute="top" secondItem="JM7-0O-cvw" secondAttribute="top" id="WKh-BD-glB"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="134" height="137"/>
+                                <connections>
+                                    <outlet property="imageView" destination="r8s-ax-dhd" id="Gnq-UV-21B"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Nuo-5D-9ua" id="bDu-wK-hDi"/>
+                            <outlet property="delegate" destination="Nuo-5D-9ua" id="CgZ-IM-J0t"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Btu-b4-p1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="227.536231884058" y="917.41071428571422"/>
         </scene>
         <!--Bucket List Table View Controller-->
         <scene sceneID="QQh-fo-Tqg">

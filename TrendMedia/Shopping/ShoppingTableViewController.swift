@@ -82,7 +82,7 @@ struct ShoppingListDB {
         var isFavorite: Bool = false
     }
     
-    private var dataForm: [ShoppingList] = [ShoppingList(shoppingList: "그립톡 구매하기"), ShoppingList(shoppingList: "사이다 구매")]
+    private var dataForm: [ShoppingList] = [ShoppingList(shoppingList: "그립톡 구매하기"), ShoppingList(shoppingList: "사이다 구매"), ShoppingList(shoppingList: "아이폰 사기", isChecked: true, isFavorite: true)]
     
     func getDataCount() -> Int {
         return dataForm.count
