@@ -9,6 +9,8 @@ import UIKit
 
 class RecommandCollectionViewCell: UICollectionViewCell {
     
+    static let identifier = "RecommandCollectionViewCell"
+    
     @IBOutlet weak var imageView: UIImageView!
     
     

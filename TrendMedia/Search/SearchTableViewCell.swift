@@ -29,6 +29,8 @@ class SearchTableViewCell: UITableViewCell {
     
     func configureCell(indexPath: IndexPath, db: MovieDB){
         
+        print(#function)
+        
         movieDateLabel.text = "\(db.movieDataList[indexPath.row].movieDate) | \(db.movieDataList[indexPath.row].movieRuntime!)분 | 평점: \(db.movieDataList[indexPath.row].movieRate)"
         movieTitleLabel.text = db.movieDataList[indexPath.row].movieTitle
         movieDetailLabel.text = db.movieDataList[indexPath.row].movieDetail

@@ -19,7 +19,7 @@ import Kingfisher
 
 class RecommandCollectionViewController: UICollectionViewController {
 
-    private let identifier = "RecommandCollectionViewCell"
+    static let identifier = "RecommandCollectionViewController"
     
     var imageURL = "https://upload.wikimedia.org/wikipedia/commons/7/72/Alcedo_azurea_-_Julatten.jpg"
     
@@ -47,21 +47,23 @@ class RecommandCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! RecommandCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommandCollectionViewCell.identifier, for: indexPath) as? RecommandCollectionViewCell else { return UICollectionViewCell() }
         
         // kingfisher
-        cell.imageView.kf.setImage(with: URL(string: imageURL))
+//        cell.imageView.kf.setImage(with: URL(string: imageURL))
         cell.imageView.backgroundColor = .orange
-        
         
         return cell
     }
     
     // item을 탭하면 처리하는 함수
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+
         view.makeToast("\(indexPath.item)번째를 선택했습니다.", duration: 1, position: .center)
-        
+
+        self.navigationController?.popViewController(animated: true)
     }
+    
+    
     
 }

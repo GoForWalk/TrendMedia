@@ -8,7 +8,9 @@
 import UIKit
 
 class SearchTableViewController: UITableViewController {
-
+    
+    static let identifier = "SearchTableViewController"
+    
     var db = MovieDB()
     
     override func viewDidLoad() {
@@ -33,6 +35,18 @@ class SearchTableViewController: UITableViewController {
         return 130
         
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function)
+        
+        let sb = UIStoryboard(name: "Trend", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: RecommandCollectionViewController.identifier) as! RecommandCollectionViewController
+        
+        // push
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    
     
 }
 

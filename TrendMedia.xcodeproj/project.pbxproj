@@ -18,6 +18,7 @@
 		CF1F0A9D2886441200CE71E4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1F0A9C2886441200CE71E4 /* SearchViewController.swift */; };
 		CF1F0A9F2886451D00CE71E4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1F0A9E2886451D00CE71E4 /* UIViewController+Extension.swift */; };
 		CF1F0AA1288647C400CE71E4 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1F0AA0288647C400CE71E4 /* UITextField+Extension.swift */; };
+		CF3121352888E74D00C86042 /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3121342888E74D00C86042 /* TrendTableViewController.swift */; };
 		CF68C0982884DDD900E63ACD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68C0972884DDD900E63ACD /* AppDelegate.swift */; };
 		CF68C09A2884DDD900E63ACD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68C0992884DDD900E63ACD /* SceneDelegate.swift */; };
 		CF68C09C2884DDD900E63ACD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68C09B2884DDD900E63ACD /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 		CF1F0A9C2886441200CE71E4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CF1F0A9E2886451D00CE71E4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CF1F0AA0288647C400CE71E4 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		CF3121342888E74D00C86042 /* TrendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewController.swift; sourceTree = "<group>"; };
 		CF68C0942884DDD900E63ACD /* TrendMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF68C0972884DDD900E63ACD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF68C0992884DDD900E63ACD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				CF1F0A962886404100CE71E4 /* Trend.storyboard */,
+				CF3121342888E74D00C86042 /* TrendTableViewController.swift */,
 				CFBA525028879DFE009AC00A /* RecommandCollectionViewCell.swift */,
 				CF73A87728864D700012FCC3 /* BucketListTableViewCell.swift */,
 				CF73A87528864BE30012FCC3 /* BucketListTableViewController.swift */,
@@ -267,6 +270,7 @@
 				CF888AC828854C0C008E8DDF /* PracSettingTableViewController.swift in Sources */,
 				CFBA524D28879959009AC00A /* movieDataBase.swift in Sources */,
 				CF9D931228878CC20011263F /* Movie.swift in Sources */,
+				CF3121352888E74D00C86042 /* TrendTableViewController.swift in Sources */,
 				CF1F0A9D2886441200CE71E4 /* SearchViewController.swift in Sources */,
 				CFBA525128879DFE009AC00A /* RecommandCollectionViewCell.swift in Sources */,
 				CF9D93102886C60D0011263F /* SearchTableViewController.swift in Sources */,

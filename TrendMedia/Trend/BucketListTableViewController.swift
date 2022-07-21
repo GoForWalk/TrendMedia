@@ -9,6 +9,8 @@ import UIKit
 
 class BucketListTableViewController: UITableViewController {
     
+    static let identifier = "BucketListTableViewController"
+    
     @IBOutlet weak var userTextField: UITextField!
     
     var movieList = ["범죄도시2", "탑건", "토르"]
@@ -19,11 +21,16 @@ class BucketListTableViewController: UITableViewController {
         tableView.rowHeight = 80
         
         movieList.append("마녀")
+        
+        // nav 영역 편집
+        setNavgationBar()
     }
     
     @IBAction func userTextFieldReturnTapped(_ sender: UITextField) {
        
-        movieList.append(sender.text!)
+        guard let userText = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !userText.isEmpty, (2...6).contains(userText.count) else { return }
+        
+        movieList.append(userText)
         print(movieList)
         
         // 중요!! 데이터 갱신
@@ -38,7 +45,7 @@ class BucketListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BucketListTableViewCell", for: indexPath) as! BucketListTableViewCell // as? 타입 캐스팅
+        let cell = tableView.dequeueReusableCell(withIdentifier: BucketListTableViewCell.identifier, for: indexPath) as! BucketListTableViewCell // as? 타입 캐스팅
         
         cell.bucketListLabel.text = movieList[indexPath.row]
         cell.bucketListLabel.font = .boldSystemFont(ofSize: 18)
@@ -65,5 +72,15 @@ class BucketListTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+  
+    func setNavgationBar() {
+        navigationItem.title = "버킷리스트"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonClicked))
+        
+    }
     
+    @objc
+    func closeButtonClicked() {
+        self.dismiss(animated: true)
+    }
 }

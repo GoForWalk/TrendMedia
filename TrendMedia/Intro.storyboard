@@ -21,11 +21,12 @@
         <scene sceneID="Cea-hV-0Oy">
             <objects>
                 <viewControllerPlaceholder storyboardName="Search" id="cZD-eI-paF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="RPo-N2-l9i"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="Xt5-3Z-EUr"/>
+                    <navigationItem key="navigationItem" id="125-aL-GGs"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fwB-Qp-Bkn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="467" y="-482"/>
+            <point key="canvasLocation" x="1376.0869565217392" y="-482.14285714285711"/>
         </scene>
         <!--Home-->
         <scene sceneID="pEn-72-Uzw">
@@ -50,7 +51,7 @@
                     <connections>
                         <segue destination="A27-cr-bkI" kind="relationship" relationship="viewControllers" id="pAR-ze-to5"/>
                         <segue destination="Xv7-Vz-AMX" kind="relationship" relationship="viewControllers" id="Jir-hu-Wxh"/>
-                        <segue destination="cZD-eI-paF" kind="relationship" relationship="viewControllers" id="00l-cS-VxE"/>
+                        <segue destination="cZD-eI-paF" kind="relationship" relationship="viewControllers" id="0B3-bc-apf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6yE-9v-EAd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
