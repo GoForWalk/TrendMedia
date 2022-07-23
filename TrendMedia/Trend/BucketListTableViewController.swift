@@ -13,13 +13,15 @@ class BucketListTableViewController: UITableViewController {
     
     @IBOutlet weak var userTextField: UITextField!
     
+    var placeholderString: String = ""
+    
     var movieList = ["범죄도시2", "탑건", "토르"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = 80
-        
+        userTextField.placeholder = placeholderString
         movieList.append("마녀")
         
         // nav 영역 편집

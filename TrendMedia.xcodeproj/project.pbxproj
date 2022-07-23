@@ -18,6 +18,7 @@
 		CF1F0A9D2886441200CE71E4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1F0A9C2886441200CE71E4 /* SearchViewController.swift */; };
 		CF1F0A9F2886451D00CE71E4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1F0A9E2886451D00CE71E4 /* UIViewController+Extension.swift */; };
 		CF1F0AA1288647C400CE71E4 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1F0AA0288647C400CE71E4 /* UITextField+Extension.swift */; };
+		CF2BA26E288BA5BC00B54BEF /* WellcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2BA26D288BA5BC00B54BEF /* WellcomViewController.swift */; };
 		CF3121352888E74D00C86042 /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3121342888E74D00C86042 /* TrendTableViewController.swift */; };
 		CF68C0982884DDD900E63ACD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68C0972884DDD900E63ACD /* AppDelegate.swift */; };
 		CF68C09A2884DDD900E63ACD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68C0992884DDD900E63ACD /* SceneDelegate.swift */; };
@@ -51,6 +52,7 @@
 		CF1F0A9C2886441200CE71E4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CF1F0A9E2886451D00CE71E4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CF1F0AA0288647C400CE71E4 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		CF2BA26D288BA5BC00B54BEF /* WellcomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomViewController.swift; sourceTree = "<group>"; };
 		CF3121342888E74D00C86042 /* TrendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewController.swift; sourceTree = "<group>"; };
 		CF68C0942884DDD900E63ACD /* TrendMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF68C0972884DDD900E63ACD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				CF73A87528864BE30012FCC3 /* BucketListTableViewController.swift */,
 				CF1F0A9A2886440500CE71E4 /* TrendViewController.swift */,
 				CFBA524E28879AA3009AC00A /* RecommandCollectionViewController.swift */,
+				CF2BA26D288BA5BC00B54BEF /* WellcomViewController.swift */,
 			);
 			path = Trend;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				CF3121352888E74D00C86042 /* TrendTableViewController.swift in Sources */,
 				CF1F0A9D2886441200CE71E4 /* SearchViewController.swift in Sources */,
 				CFBA525128879DFE009AC00A /* RecommandCollectionViewCell.swift in Sources */,
+				CF2BA26E288BA5BC00B54BEF /* WellcomViewController.swift in Sources */,
 				CF9D93102886C60D0011263F /* SearchTableViewController.swift in Sources */,
 				CF1082F72884FE81009E2756 /* SettingTableViewController.swift in Sources */,
 				CF73A87828864D700012FCC3 /* BucketListTableViewCell.swift in Sources */,

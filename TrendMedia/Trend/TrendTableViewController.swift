@@ -24,6 +24,8 @@ class TrendTableViewController: UITableViewController {
         // 2.
         let vc = storyboard.instantiateViewController(withIdentifier: BucketListTableViewController.identifier) as! BucketListTableViewController
         
+        vc.placeholderString = "영화 이름을 입력해 보세요!!"
+        
         // 3.
         self.present(vc, animated: true)
         

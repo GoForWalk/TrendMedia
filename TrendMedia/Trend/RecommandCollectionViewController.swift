@@ -23,8 +23,15 @@ class RecommandCollectionViewController: UICollectionViewController {
     
     var imageURL = "https://upload.wikimedia.org/wikipedia/commons/7/72/Alcedo_azurea_-_Julatten.jpg"
     
+    // 1. 값 전달 - 데이터를 받을 공간(프로퍼티) 생성
+    // 대체로 optional 사용
+    var moviData: MovieData?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 3. 값 전달 - 프로퍼티 값을 뷰에 표현
+        title = moviData?.movieTitle
         
         // 컬렉션 뷰의 셀 크기, 셀 사이 간격 등 설정
         let layout = UICollectionViewFlowLayout()
