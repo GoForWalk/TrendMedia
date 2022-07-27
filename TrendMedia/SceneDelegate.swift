@@ -11,31 +11,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    // 이곳에서 시작화면을 설정할 수 있다.
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        UserDefaults.standard.set(false, forKey: "First") // >> 다른 화면에 배치해야한다.
-
-        guard let scene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: scene)
-        
-        // true면, WellcomeViewController, false이면 SearchViewController
-        if UserDefaults.standard.bool(forKey: "First") {
-
-            let sb = UIStoryboard(name: "Trend", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "WellcomViewController") as! WellcomViewController
-            
-            window?.rootViewController = vc
-        } else {
-
-            let sb = UIStoryboard(name: "Search", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "SearchTableViewController") as! SearchTableViewController
-            
-            window?.rootViewController = UINavigationController(rootViewController: vc)
-        }
-        // 위 코드를 실행시키는 메서드
-        window?.makeKeyAndVisible()
+        guard let _ = (scene as? UIWindowScene) else {return}
     }
+    
+    // 이곳에서 시작화면을 설정할 수 있다.
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//
+//        UserDefaults.standard.set(false, forKey: "First") // >> 다른 화면에 배치해야한다.
+//
+//        guard let scene = (scene as? UIWindowScene) else { return }
+//        window = UIWindow(windowScene: scene)
+//
+//        // true면, WellcomeViewController, false이면 SearchViewController
+//        if UserDefaults.standard.bool(forKey: "First") {
+//
+//            let sb = UIStoryboard(name: "Trend", bundle: nil)
+//            let vc = sb.instantiateViewController(withIdentifier: "WellcomViewController") as! WellcomViewController
+//
+//            window?.rootViewController = vc
+//        } else {
+//
+//            let sb = UIStoryboard(name: "Search", bundle: nil)
+//            let vc = sb.instantiateViewController(withIdentifier: "SearchTableViewController") as! SearchTableViewController
+//
+//            window?.rootViewController = UINavigationController(rootViewController: vc)
+//        }
+//        // 위 코드를 실행시키는 메서드
+//        window?.makeKeyAndVisible()
+//    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

@@ -20,6 +20,8 @@ class SearchTableViewController: UITableViewController {
         
     }
     
+    
+    
     @objc func resetButtonClicked() {
         
         // iOS13+ SceneDelegate를 쓸 때 동작하는 코드

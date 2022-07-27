@@ -14,24 +14,12 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieDateLabel: UILabel!
     @IBOutlet weak var movieDetailLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
         
-        
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        
-    }
-    
     func configureCell(indexPath: IndexPath, db: MovieDB){
         
         print(#function)
         
-        movieDateLabel.text = "\(db.movieDataList[indexPath.row].movieDate) | \(db.movieDataList[indexPath.row].movieRuntime!)분 | 평점: \(db.movieDataList[indexPath.row].movieRate)"
+        movieDateLabel.text = db.movieDataList[indexPath.row].movieDescription
         movieTitleLabel.text = db.movieDataList[indexPath.row].movieTitle
         movieDetailLabel.text = db.movieDataList[indexPath.row].movieDetail
         movieImageView.image = db.movieDataList[indexPath.row].movieImage

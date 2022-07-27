@@ -15,6 +15,9 @@ struct MovieData {
     var movieDetail: String
     var movieRuntime: Int?
     var movieRate: Double = 0.0
+    
+    var movieDescription: String {
+        "\(movieDate) | \(movieRuntime!)분 | 평점: \(movieRate)"    }
 }
 
 

@@ -7,22 +7,41 @@
 
 import UIKit
 
+struct Todo {
+    var title: String
+    var done: Bool
+}
+
+
 class BucketListTableViewController: UITableViewController {
     
     static let identifier = "BucketListTableViewController"
     
-    @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet weak var userTextField: UITextField! {
+        didSet {
+            userTextField.textAlignment = .center
+            userTextField.font = .boldSystemFont(ofSize: 22)
+            userTextField.textColor = .systemRed
+            print("textField Didset")
+        }
+    }
     
     var placeholderString: String = ""
     
-    var movieList = ["범죄도시2", "탑건", "토르"]
+    // list property가 추가, 삭제등 변경 되고나서 테이블뷰를 항상 갱신
+    var movieList = [Todo(title: "탑건", done: false), Todo(title: "토르", done: false)] {
+        didSet {
+            tableView.reloadData()
+            print("List가 변경됨 \(movieList), \(oldValue)")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = 80
         userTextField.placeholder = placeholderString
-        movieList.append("마녀")
+        movieList.append(Todo(title: "마녀", done: false))
         
         // nav 영역 편집
         setNavgationBar()
@@ -32,11 +51,11 @@ class BucketListTableViewController: UITableViewController {
        
         guard let userText = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !userText.isEmpty, (2...6).contains(userText.count) else { return }
         
-        movieList.append(userText)
+        movieList.append(Todo(title: userText, done: false))
         print(movieList)
         
         // 중요!! 데이터 갱신
-        tableView.reloadData()
+//        tableView.reloadData()
 //        tableView.reloadSections(<#T##sections: IndexSet##IndexSet#>, with: <#T##UITableView.RowAnimation#>)
 //        tableView.reloadRows(at: [IndexPath(row: 0, section: 0), IndexPath(row: 1, section: 0)], with: .fade)
     }
@@ -49,8 +68,16 @@ class BucketListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BucketListTableViewCell.identifier, for: indexPath) as! BucketListTableViewCell // as? 타입 캐스팅
         
-        cell.bucketListLabel.text = movieList[indexPath.row]
+        cell.bucketListLabel.text = movieList[indexPath.row].title
         cell.bucketListLabel.font = .boldSystemFont(ofSize: 18)
+        
+        cell.checkBoxButton.tag = indexPath.row
+        cell.checkBoxButton.addTarget(self, action: #selector(checkBoxButtonTapped(sender:)), for: .touchUpInside)
+        
+        // UI 변경
+        let value = movieList[indexPath.row].done ? "checkmark.square" : "checkmark.square.fill"
+        
+        cell.checkBoxButton.setImage(UIImage(systemName: value), for: .normal)
         
         return cell
     }
@@ -71,7 +98,7 @@ class BucketListTableViewController: UITableViewController {
         if editingStyle == .delete {
             // 배열 삭제 후 리로드
             movieList.remove(at: indexPath.row)
-            tableView.reloadData()
+//            tableView.reloadData()
         }
     }
   
@@ -84,5 +111,15 @@ class BucketListTableViewController: UITableViewController {
     @objc
     func closeButtonClicked() {
         self.dismiss(animated: true)
+    }
+    
+    @objc
+    func checkBoxButtonTapped(sender: UIButton) {
+        // 데이터만 변경
+        movieList[sender.tag].done = !movieList[sender.tag].done
+        
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
+        
+        print("\(sender.tag) button Tapped")
     }
 }
