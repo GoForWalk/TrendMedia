@@ -55,7 +55,7 @@ class ShoppingTableViewController: UITableViewController {
     }
     
     func getDataFromModel() {
-         task = localRealm.objects(ShoppingList.self)
+        task = localRealm.objects(ShoppingList.self).sorted(byKeyPath: "registerDate", ascending: true)
     }
     
     func addDataToModel(shoppingTitle: String,  completionHandler: @escaping () -> ()) {

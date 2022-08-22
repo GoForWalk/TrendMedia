@@ -15,6 +15,7 @@ class ShoppingList: Object {
     @Persisted var shoppingTitle: String
     @Persisted var isDone: Bool
     @Persisted var isFavorite: Bool
+    @Persisted(indexed: true) var registerDate: Date
 
     
     convenience init(shoppingTitle: String, isDone: Bool = false, isFavorite: Bool = false) {
@@ -22,6 +23,7 @@ class ShoppingList: Object {
         self.shoppingTitle = shoppingTitle
         self.isDone = isDone
         self.isFavorite = isFavorite
+        self.registerDate = Date()
     }
     
 }
