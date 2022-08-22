@@ -10,6 +10,7 @@ import RealmSwift
 
 class ShoppingTableViewController: UITableViewController {
 
+    // MARK: Properties
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var addShoppingListTextField: UITextField!
     
@@ -21,11 +22,11 @@ class ShoppingTableViewController: UITableViewController {
     
     var task: Results<ShoppingList>!
     
+    // MARK: ViewDidLoad(Scene Life Cycle Method)
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = 56
-        
         tableView.separatorStyle = .singleLine
         getDataFromModel()
         setUI()
@@ -35,38 +36,11 @@ class ShoppingTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         getDataFromModel()
-        print(localRealm.configuration.fileURL!, "===" ,task.count.description)
+        print(localRealm.configuration.fileURL!)
         tableView.reloadData()
     }
     
-    func setUI() {
-        addShoppingListTextField.placeholder = "무엇을 구매하실 건가요?"
-        addShoppingListTextField.backgroundColor = .systemGray6
-        headerView.backgroundColor = .systemGray6
-        headerView.layer.cornerRadius = 12
-        headerView.clipsToBounds = true
-
-        addShoppingListButton.backgroundColor = .systemGray5
-        addShoppingListButton.layer.cornerRadius = 12
-        addShoppingListButton.clipsToBounds = true
-        
-        headerView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
-        
-    }
-    
-    func getDataFromModel() {
-        task = localRealm.objects(ShoppingList.self).sorted(byKeyPath: "registerDate", ascending: true)
-    }
-    
-    func addDataToModel(shoppingTitle: String,  completionHandler: @escaping () -> ()) {
-        let addData = ShoppingList(shoppingTitle: shoppingTitle)
-        
-        try! localRealm.write {
-            localRealm.add(addData)
-            completionHandler()
-        }
-    }
-
+    // MARK: TableView Delegate, DataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return task.count
     }
@@ -89,6 +63,7 @@ class ShoppingTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: IBAction
     @IBAction func addButtonTapped(_ sender: UIButton) {
         addShoppingList()
     }
@@ -102,18 +77,72 @@ class ShoppingTableViewController: UITableViewController {
         changeShoppingStatus(statusType: .check, index: sender.tag)
     }
     
-    
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
         
         print(#function, sender, sender.tag)
         changeShoppingStatus(statusType: .favorite, index: sender.tag)
     }
+        
+}
+
+// MARK: UI set
+extension ShoppingTableViewController {
+    
+    func setUI() {
+        addShoppingListTextField.placeholder = "무엇을 구매하실 건가요?"
+        addShoppingListTextField.backgroundColor = .systemGray6
+        headerView.backgroundColor = .systemGray6
+        headerView.layer.cornerRadius = 12
+        headerView.clipsToBounds = true
+
+        addShoppingListButton.backgroundColor = .systemGray5
+        addShoppingListButton.layer.cornerRadius = 12
+        addShoppingListButton.clipsToBounds = true
+        
+        headerView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
+        
+    }
+
+    func setButtonImage(statusType: ShoppingStatus, currentStatus: Bool) -> UIImage {
+        
+        switch statusType {
+        case .check:
+            switch currentStatus {
+            case true: return UIImage(systemName: "checkmark.square.fill")!
+            case false: return UIImage(systemName: "checkmark.square")!
+            }
+            
+        case .favorite:
+            switch currentStatus {
+            case true: return UIImage(systemName: "star.fill")!
+            case false: return UIImage(systemName: "star")!
+            }
+
+        }
+    }
+
+}
+
+// MARK: Model 작업
+extension ShoppingTableViewController {
     
     
+    func getDataFromModel() {
+        task = localRealm.objects(ShoppingList.self).sorted(byKeyPath: "registerDate", ascending: true)
+    }
+    
+    func addDataToModel(shoppingTitle: String,  completionHandler: @escaping () -> ()) {
+        let addData = ShoppingList(shoppingTitle: shoppingTitle)
+        
+        try! localRealm.write {
+            localRealm.add(addData)
+            completionHandler()
+        }
+    }
+
     func addShoppingList() {
         guard let word =  addShoppingListTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         
-//        db.addShoppingList(word: word)
         addDataToModel(shoppingTitle: word) { [weak self] in
             self?.tableView.reloadData()
         }
@@ -145,25 +174,9 @@ class ShoppingTableViewController: UITableViewController {
         }
         
     }
-    
-    func setButtonImage(statusType: ShoppingStatus, currentStatus: Bool) -> UIImage {
-        
-        switch statusType {
-        case .check:
-            switch currentStatus {
-            case true: return UIImage(systemName: "checkmark.square.fill")!
-            case false: return UIImage(systemName: "checkmark.square")!
-            }
-            
-        case .favorite:
-            switch currentStatus {
-            case true: return UIImage(systemName: "star.fill")!
-            case false: return UIImage(systemName: "star")!
-            }
 
-        }
-    }
 }
+
 
 enum ShoppingStatus {
     case check, favorite
