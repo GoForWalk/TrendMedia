@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cEl-rP-eWG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -76,6 +75,9 @@
                                             <state key="normal" image="star" catalog="system">
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28"/>
                                             </state>
+                                            <connections>
+                                                <action selector="favoriteButtonTapped:" destination="IZP-Fc-MA7" eventType="touchUpInside" id="pBM-ja-Xvs"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="joT-N2-TqC">
                                             <rect key="frame" x="20" y="8" width="32" height="32"/>
@@ -88,6 +90,9 @@
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28"/>
                                             </state>
                                             <state key="selected" image="checkmark.square.fill" catalog="system"/>
+                                            <connections>
+                                                <action selector="checkButtonTapped:" destination="IZP-Fc-MA7" eventType="touchUpInside" id="W6t-Am-h06"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그립톡 구매하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Teh-cx-6MW">
                                             <rect key="frame" x="80" y="10" width="107.5" height="28"/>
@@ -112,7 +117,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="checkBoxButton" destination="joT-N2-TqC" id="06W-Qf-ZDz"/>
-                                    <outlet property="favoriteCheckButton" destination="0XI-rB-eaB" id="gOi-Ax-sHn"/>
+                                    <outlet property="favoriteCheckButton" destination="0XI-rB-eaB" id="Xl1-Cf-9NG"/>
                                     <outlet property="shoppingListLabel" destination="Teh-cx-6MW" id="kD4-c1-XXW"/>
                                 </connections>
                             </tableViewCell>

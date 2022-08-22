@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ShoppingTableViewController: UITableViewController {
 
@@ -13,19 +14,29 @@ class ShoppingTableViewController: UITableViewController {
     @IBOutlet weak var addShoppingListTextField: UITextField!
     
     @IBOutlet weak var addShoppingListButton: UIButton!
-    
+        
     private let identifier = "ShoppingTableViewCell"
     
-    var db = ShoppingListDB()
+    let localRealm = try! Realm()
+    
+    var task: Results<ShoppingList>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.rowHeight = 56
         
         tableView.separatorStyle = .singleLine
-        
+        getDataFromModel()
         setUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        getDataFromModel()
+        print(localRealm.configuration.fileURL!, "===" ,task.count.description)
+        tableView.reloadData()
     }
     
     func setUI() {
@@ -42,16 +53,36 @@ class ShoppingTableViewController: UITableViewController {
         headerView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
         
     }
+    
+    func getDataFromModel() {
+         task = localRealm.objects(ShoppingList.self)
+    }
+    
+    func addDataToModel(shoppingTitle: String,  completionHandler: @escaping () -> ()) {
+        let addData = ShoppingList(shoppingTitle: shoppingTitle)
+        
+        try! localRealm.write {
+            localRealm.add(addData)
+            completionHandler()
+        }
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return db.getDataCount()
+        return task.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? ShoppingTableViewCell else { return UITableViewCell()}
         
-        cell.shoppingListLabel.text = db.getShoppingList()[indexPath.row]
+        cell.shoppingListLabel.text = task[indexPath.row].shoppingTitle
+        cell.checkBoxButton.tag = indexPath.row
+        cell.favoriteCheckButton.tag = indexPath.row
+        
+        cell.checkBoxButton.setImage(setButtonImage(statusType: .check, currentStatus: task[indexPath.row].isDone), for: .normal)
+        
+        cell.favoriteCheckButton.setImage(setButtonImage(statusType: .favorite, currentStatus: task[indexPath.row].isFavorite), for: .normal)
+        
         cell.layer.borderWidth = 3.0
         cell.layer.borderColor = CGColor(gray: 0, alpha: 0)
         
@@ -66,36 +97,74 @@ class ShoppingTableViewController: UITableViewController {
         addShoppingList()
     }
     
+    @IBAction func checkButtonTapped(_ sender: UIButton) {
+        print(#function, sender, sender.tag)
+        changeShoppingStatus(statusType: .check, index: sender.tag)
+    }
+    
+    
+    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+        
+        print(#function, sender, sender.tag)
+        changeShoppingStatus(statusType: .favorite, index: sender.tag)
+    }
+    
+    
     func addShoppingList() {
         guard let word =  addShoppingListTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         
-        db.addShoppingList(word: word)
-        tableView.reloadData()
+//        db.addShoppingList(word: word)
+        addDataToModel(shoppingTitle: word) { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    func changeShoppingStatus(statusType: ShoppingStatus, index: Int) {
+        
+        let indexPath = IndexPath(row: index, section: 0)
+        let changeTask = task[index]
+        
+        switch statusType {
+        case .check:
+            
+            let currentStatus = changeTask.isDone
+            try! localRealm.write {
+                changeTask.isDone = !currentStatus
+                self.tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+            return
+            
+        case .favorite:
+
+            let currentStatus = changeTask.isFavorite
+            try! localRealm.write {
+                changeTask.isFavorite = !currentStatus
+                self.tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+            return
+        }
+        
+    }
+    
+    func setButtonImage(statusType: ShoppingStatus, currentStatus: Bool) -> UIImage {
+        
+        switch statusType {
+        case .check:
+            switch currentStatus {
+            case true: return UIImage(systemName: "checkmark.square.fill")!
+            case false: return UIImage(systemName: "checkmark.square")!
+            }
+            
+        case .favorite:
+            switch currentStatus {
+            case true: return UIImage(systemName: "star.fill")!
+            case false: return UIImage(systemName: "star")!
+            }
+
+        }
     }
 }
 
-struct ShoppingListDB {
-    
-    private struct ShoppingList {
-        var shoppingList: String
-        var isChecked: Bool = false
-        var isFavorite: Bool = false
-    }
-    
-    private var dataForm: [ShoppingList] = [ShoppingList(shoppingList: "그립톡 구매하기"), ShoppingList(shoppingList: "사이다 구매"), ShoppingList(shoppingList: "아이폰 사기", isChecked: true, isFavorite: true)]
-    
-    func getDataCount() -> Int {
-        return dataForm.count
-    }
-    
-    func getShoppingList() -> [String] {
-        return dataForm.map {
-            return $0.shoppingList
-        }
-   }
-    
-    mutating func addShoppingList(word: String) {
-        dataForm.append(ShoppingList(shoppingList: word))
-    }
-    
+enum ShoppingStatus {
+    case check, favorite
 }
