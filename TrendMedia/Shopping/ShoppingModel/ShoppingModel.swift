@@ -15,6 +15,7 @@ class ShoppingList: Object {
     @Persisted var shoppingTitle: String
     @Persisted var isDone: Bool
     @Persisted var isFavorite: Bool
+    @Persisted var shoppingDetailContent: String?
     @Persisted(indexed: true) var registerDate: Date
 
     
@@ -23,6 +24,7 @@ class ShoppingList: Object {
         self.shoppingTitle = shoppingTitle
         self.isDone = isDone
         self.isFavorite = isFavorite
+        self.shoppingDetailContent = nil
         self.registerDate = Date()
     }
     

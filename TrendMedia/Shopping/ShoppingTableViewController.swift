@@ -20,7 +20,12 @@ class ShoppingTableViewController: UITableViewController {
     
     let localRealm = try! Realm()
     
-    var task: Results<ShoppingList>!
+    var task: Results<ShoppingList>! {
+        didSet {
+            self.tableView.reloadData()
+            print("Task Updated")
+        }
+    }
     
     // MARK: ViewDidLoad(Scene Life Cycle Method)
     override func viewDidLoad() {
@@ -30,6 +35,7 @@ class ShoppingTableViewController: UITableViewController {
         tableView.separatorStyle = .singleLine
         getDataFromModel()
         setUI()
+        setNav()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,7 +43,7 @@ class ShoppingTableViewController: UITableViewController {
         
         getDataFromModel()
         print(localRealm.configuration.fileURL!)
-        tableView.reloadData()
+//        tableView.reloadData()
     }
     
     // MARK: TableView Delegate, DataSource
@@ -63,6 +69,26 @@ class ShoppingTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { action, view, handler in
+            
+            self.deleteShoppingRecord(index: indexPath.row)
+        }
+        
+        delete.image = UIImage(systemName: "trash.fill")
+        
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: ShoppingDetailViewController.identifier) as? ShoppingDetailViewController else { return }
+        
+        vc.objectUUID = task[indexPath.row].uuid.description
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     // MARK: IBAction
     @IBAction func addButtonTapped(_ sender: UIButton) {
         addShoppingList()
@@ -70,6 +96,7 @@ class ShoppingTableViewController: UITableViewController {
     
     @IBAction func addShoppingListReturnTapped(_ sender: UITextField) {
         addShoppingList()
+        sender.text = ""
     }
     
     @IBAction func checkButtonTapped(_ sender: UIButton) {
@@ -121,6 +148,25 @@ extension ShoppingTableViewController {
         }
     }
 
+    func setNav() {
+        
+        let barButtonMenu = UIMenu(title: "", options: [], children: [
+            UIAction(title: "전체", image: UIImage(systemName: "list.bullet.clipboard"), handler: { _ in
+                self.getDataFromModel()
+            }),
+            
+            UIAction(title: "살것", image: UIImage(systemName: "cart"), state: .off, handler: { _ in
+                self.getNotBuyShoppingList()
+            }),
+            
+            UIAction(title: "즐겨찾기", image: UIImage(systemName: "star.fill"), state: .off, handler: { _ in
+                self.getFavoriteShoppingList()
+            })
+        ])
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "정렬", image: nil, primaryAction: nil, menu: barButtonMenu)
+    }
+    
 }
 
 // MARK: Model 작업
@@ -129,6 +175,20 @@ extension ShoppingTableViewController {
     
     func getDataFromModel() {
         task = localRealm.objects(ShoppingList.self).sorted(byKeyPath: "registerDate", ascending: true)
+    }
+    
+    func getFavoriteShoppingList(){
+        task = localRealm.objects(ShoppingList.self)
+            .where {
+                $0.isFavorite == true
+            }.sorted(byKeyPath: "registerDate", ascending: true)
+    }
+    
+    func getNotBuyShoppingList() {
+        task = localRealm.objects(ShoppingList.self)
+            .where {
+                $0.isDone == false
+            }.sorted(byKeyPath: "registerDate", ascending: true)
     }
     
     func addDataToModel(shoppingTitle: String,  completionHandler: @escaping () -> ()) {
@@ -150,34 +210,53 @@ extension ShoppingTableViewController {
     
     func changeShoppingStatus(statusType: ShoppingStatus, index: Int) {
         
-        let indexPath = IndexPath(row: index, section: 0)
         let changeTask = task[index]
         
         switch statusType {
         case .check:
-            
             let currentStatus = changeTask.isDone
             try! localRealm.write {
                 changeTask.isDone = !currentStatus
-                self.tableView.reloadRows(at: [indexPath], with: .fade)
+                self.tableView.reloadData()
             }
             return
             
         case .favorite:
-
             let currentStatus = changeTask.isFavorite
             try! localRealm.write {
                 changeTask.isFavorite = !currentStatus
-                self.tableView.reloadRows(at: [indexPath], with: .fade)
+                self.tableView.reloadData()
             }
             return
         }
         
     }
+    
+    func deleteShoppingRecord(index: Int) {
+        
+        do{
+            try localRealm.write {
+                localRealm.delete(task[index])
+            }
+            
+            tableView.reloadData()
+        } catch ModelError.deadLock {
+            print("DEADLOCK")
+        } catch {
+            print("Error")
+        }
+    }
 
 }
 
-
 enum ShoppingStatus {
     case check, favorite
+}
+
+enum ShoppingSortType {
+    case all, favorite, notBuy
+}
+
+enum ModelError: Error {
+    case deadLock
 }

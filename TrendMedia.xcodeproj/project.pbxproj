@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		CF09C44028B350D600D0DE4C /* ShoppingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF09C43F28B350D600D0DE4C /* ShoppingModel.swift */; };
+		CF09C44228B3794000D0DE4C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CF09C44128B3794000D0DE4C /* .gitignore */; };
+		CF09C44528B3797400D0DE4C /* MovieAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF09C44428B3797400D0DE4C /* MovieAPIKey.swift */; };
+		CF09C44828B379BA00D0DE4C /* APIManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF09C44728B379BA00D0DE4C /* APIManger.swift */; };
+		CF09C44B28B37A0000D0DE4C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CF09C44A28B37A0000D0DE4C /* Alamofire */; };
+		CF09C44E28B37A1100D0DE4C /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = CF09C44D28B37A1100D0DE4C /* SwiftyJSON */; };
+		CF09C45128B3AEA100D0DE4C /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF09C45028B3AEA100D0DE4C /* MovieModel.swift */; };
+		CF09C45428B4C39D00D0DE4C /* ShoppingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF09C45328B4C39D00D0DE4C /* ShoppingDetailViewController.swift */; };
 		CF0DCB4F28868636002C97BB /* Shopping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF0DCB4E28868636002C97BB /* Shopping.storyboard */; };
 		CF0DCB5128869041002C97BB /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DCB5028869041002C97BB /* ShoppingTableViewController.swift */; };
 		CF0DCB53288690E7002C97BB /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DCB52288690E7002C97BB /* ShoppingTableViewCell.swift */; };
@@ -45,6 +52,11 @@
 
 /* Begin PBXFileReference section */
 		CF09C43F28B350D600D0DE4C /* ShoppingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingModel.swift; sourceTree = "<group>"; };
+		CF09C44128B3794000D0DE4C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		CF09C44428B3797400D0DE4C /* MovieAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPIKey.swift; sourceTree = "<group>"; };
+		CF09C44728B379BA00D0DE4C /* APIManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManger.swift; sourceTree = "<group>"; };
+		CF09C45028B3AEA100D0DE4C /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		CF09C45328B4C39D00D0DE4C /* ShoppingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingDetailViewController.swift; sourceTree = "<group>"; };
 		CF0DCB4E28868636002C97BB /* Shopping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shopping.storyboard; sourceTree = "<group>"; };
 		CF0DCB5028869041002C97BB /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
 		CF0DCB52288690E7002C97BB /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
@@ -83,6 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF09C44E28B37A1100D0DE4C /* SwiftyJSON in Frameworks */,
+				CF09C44B28B37A0000D0DE4C /* Alamofire in Frameworks */,
 				CFA8AD1E28B34F5F00F38CF0 /* RealmSwift in Frameworks */,
 				CFA8AD1C28B34F5F00F38CF0 /* Realm in Frameworks */,
 				CFBA52572887AE65009AC00A /* Toast in Frameworks */,
@@ -93,6 +107,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF09C44328B3796200D0DE4C /* APIKey */ = {
+			isa = PBXGroup;
+			children = (
+				CF09C44428B3797400D0DE4C /* MovieAPIKey.swift */,
+			);
+			path = APIKey;
+			sourceTree = "<group>";
+		};
+		CF09C44628B379A200D0DE4C /* APIManger */ = {
+			isa = PBXGroup;
+			children = (
+				CF09C44728B379BA00D0DE4C /* APIManger.swift */,
+			);
+			path = APIManger;
+			sourceTree = "<group>";
+		};
+		CF09C44F28B3AE7E00D0DE4C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF09C45028B3AEA100D0DE4C /* MovieModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF09C45228B4BEAF00D0DE4C /* ShoppingDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				CF09C45328B4C39D00D0DE4C /* ShoppingDetailViewController.swift */,
+			);
+			path = ShoppingDetailView;
+			sourceTree = "<group>";
+		};
 		CF0DCB4B28865341002C97BB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +161,8 @@
 		CF0DCB4D28865378002C97BB /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				CF09C44F28B3AE7E00D0DE4C /* Model */,
+				CF09C44628B379A200D0DE4C /* APIManger */,
 				CF1F0A942886401600CE71E4 /* Search.storyboard */,
 				CF1F0A9C2886441200CE71E4 /* SearchViewController.swift */,
 				CF9D930D2886C5F80011263F /* SearchTableViewCell.swift */,
@@ -128,6 +176,7 @@
 		CF0DCB542886944B002C97BB /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
+				CF09C45228B4BEAF00D0DE4C /* ShoppingDetailView */,
 				CFA8AD1F28B34FAC00F38CF0 /* ShoppingModel */,
 				CF0DCB4E28868636002C97BB /* Shopping.storyboard */,
 				CF0DCB5028869041002C97BB /* ShoppingTableViewController.swift */,
@@ -139,6 +188,7 @@
 		CF68C08B2884DDD900E63ACD = {
 			isa = PBXGroup;
 			children = (
+				CF09C44128B3794000D0DE4C /* .gitignore */,
 				CF68C0962884DDD900E63ACD /* TrendMedia */,
 				CF68C0952884DDD900E63ACD /* Products */,
 			);
@@ -155,6 +205,7 @@
 		CF68C0962884DDD900E63ACD /* TrendMedia */ = {
 			isa = PBXGroup;
 			children = (
+				CF09C44328B3796200D0DE4C /* APIKey */,
 				CF1F0A982886407600CE71E4 /* Intro.storyboard */,
 				CF0DCB542886944B002C97BB /* Shopping */,
 				CF73A87928864DB80012FCC3 /* Trend */,
@@ -216,6 +267,8 @@
 				CFBA52562887AE65009AC00A /* Toast */,
 				CFA8AD1B28B34F5F00F38CF0 /* Realm */,
 				CFA8AD1D28B34F5F00F38CF0 /* RealmSwift */,
+				CF09C44A28B37A0000D0DE4C /* Alamofire */,
+				CF09C44D28B37A1100D0DE4C /* SwiftyJSON */,
 			);
 			productName = TrendMedia;
 			productReference = CF68C0942884DDD900E63ACD /* TrendMedia.app */;
@@ -249,6 +302,8 @@
 				CFBA52522887AE4C009AC00A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CFBA52552887AE65009AC00A /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				CFA8AD1A28B34F5F00F38CF0 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				CF09C44928B37A0000D0DE4C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				CF09C44C28B37A1100D0DE4C /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = CF68C0952884DDD900E63ACD /* Products */;
 			projectDirPath = "";
@@ -271,6 +326,7 @@
 				CF68C0AC2884F12700E63ACD /* Home.storyboard in Resources */,
 				CF1F0A972886404100CE71E4 /* Trend.storyboard in Resources */,
 				CF1F0A992886407600CE71E4 /* Intro.storyboard in Resources */,
+				CF09C44228B3794000D0DE4C /* .gitignore in Resources */,
 				CF1F0A952886401600CE71E4 /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,11 +338,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF09C44528B3797400D0DE4C /* MovieAPIKey.swift in Sources */,
 				CF1F0AA1288647C400CE71E4 /* UITextField+Extension.swift in Sources */,
 				CF0DCB53288690E7002C97BB /* ShoppingTableViewCell.swift in Sources */,
 				CF0DCB5128869041002C97BB /* ShoppingTableViewController.swift in Sources */,
 				CF73A87628864BE30012FCC3 /* BucketListTableViewController.swift in Sources */,
 				CF1F0A9F2886451D00CE71E4 /* UIViewController+Extension.swift in Sources */,
+				CF09C44828B379BA00D0DE4C /* APIManger.swift in Sources */,
 				CFBA524F28879AA3009AC00A /* RecommandCollectionViewController.swift in Sources */,
 				CF888AC828854C0C008E8DDF /* PracSettingTableViewController.swift in Sources */,
 				CFBA524D28879959009AC00A /* movieDataBase.swift in Sources */,
@@ -301,7 +359,9 @@
 				CF68C09C2884DDD900E63ACD /* ViewController.swift in Sources */,
 				CF68C0982884DDD900E63ACD /* AppDelegate.swift in Sources */,
 				CF1F0A9B2886440500CE71E4 /* TrendViewController.swift in Sources */,
+				CF09C45428B4C39D00D0DE4C /* ShoppingDetailViewController.swift in Sources */,
 				CF09C44028B350D600D0DE4C /* ShoppingModel.swift in Sources */,
+				CF09C45128B3AEA100D0DE4C /* MovieModel.swift in Sources */,
 				CF68C09A2884DDD900E63ACD /* SceneDelegate.swift in Sources */,
 				CF9D930E2886C5F80011263F /* SearchTableViewCell.swift in Sources */,
 			);
@@ -525,6 +585,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CF09C44928B37A0000D0DE4C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		CF09C44C28B37A1100D0DE4C /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		CFA8AD1A28B34F5F00F38CF0 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -552,6 +628,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CF09C44A28B37A0000D0DE4C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF09C44928B37A0000D0DE4C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		CF09C44D28B37A1100D0DE4C /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF09C44C28B37A1100D0DE4C /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
 		CFA8AD1B28B34F5F00F38CF0 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CFA8AD1A28B34F5F00F38CF0 /* XCRemoteSwiftPackageReference "realm-swift" */;
